@@ -1,16 +1,34 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  NgModule,
+  NO_ERRORS_SCHEMA,
+} from "@angular/core";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
+import { CoursesComponent } from "./courses.component";
+import { CourseComponent } from "./course/course.component";
+import { CoursesService } from "./courses.service";
+import { FormsModule } from "@angular/forms";
+import { SummaryPipe } from "./summary.pipe";
+import { FavoriteComponent } from "./favorite/favorite.component";
+import { InputFormatDirective } from './input-format.directive';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CoursesComponent,
+    CourseComponent,
+    SummaryPipe,
+    FavoriteComponent,
+    InputFormatDirective,
+    ContactFormComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, FormsModule],
+  exports: [CourseComponent],
+  providers: [CoursesService],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}
