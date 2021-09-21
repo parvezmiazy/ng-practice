@@ -1,0 +1,27 @@
+<form  [formGroup]="form" (ngSubmit)="login()">
+
+    <div formGroupName="account">
+        <div class="form-group">
+            <label for="lastname">Username</label>
+            
+                <input type="text" 
+                class="form-control"
+                (keyup.enter)="addTopic(topic)"
+                #topic
+                 formControlName="username"
+                  placeholder="Last Name"
+                  >
+        <ul class="list-group">
+            <li 
+                *ngFor ="let topic of topics.controls"
+                (click)="removeTopic(topic)"
+                class="list-group-item">
+                {{topic.value}}
+            </li>
+        </ul>
+          
+        </div>
+
+    </div>
+
+</form>    

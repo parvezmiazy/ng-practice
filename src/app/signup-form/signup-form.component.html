@@ -1,0 +1,91 @@
+
+                        <form  [formGroup]="form" (ngSubmit)="login()">
+
+                            <div formGroupName="account">
+                                <div class="form-group">
+                                    <label for="lastname">Username</label>
+                                    
+                                        <input type="text" class="form-control" formControlName="username" placeholder="Last Name">
+                                        <div *ngIf="username.pending">Checking for uniqueness...</div>
+                                        <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
+                                            <div *ngIf="username.errors.required">Username is required</div>
+                                            <div *ngIf="username.errors.cannotContainSpace">Username Cannot Contain space</div>
+                                            <div *ngIf="username.errors.shouldBeUnique">Username is already taken</div>
+                                            <div *ngIf="username.errors.minlength">Username should be minimum {{ username.errors.minlength.requiredLength}} characters</div>
+                                            
+                                        </div>
+                                  
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                  
+                                        <input type="password" formControlName="password"  class="form-control" name="passwd" placeholder="Password">
+                                   
+                                </div>
+                            </div>
+                                
+                              
+                            <!-- <div class="form-group">
+                                <label for="email" class="col-md-3 control-label">Email</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="email" placeholder="Email Address">
+                                </div>
+                            </div>
+                                
+                            <div class="form-group">
+                                <label for="firstname" class="col-md-3 control-label">First Name</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                                </div>
+                            </div> -->
+                            <!-- <div class="form-group">
+                                <label for="lastname">Username</label>
+                                
+                                    <input type="text" class="form-control" formControlName="username" placeholder="Last Name">
+                                    <div *ngIf="username.pending">Checking for uniqueness...</div>
+                                    <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
+                                        <div *ngIf="username.errors.required">Username is required</div>
+                                        <div *ngIf="username.errors.cannotContainSpace">Username Cannot Contain space</div>
+                                        <div *ngIf="username.errors.shouldBeUnique">Username is already taken</div>
+                                        <div *ngIf="username.errors.minlength">Username should be minimum {{ username.errors.minlength.requiredLength}} characters</div>
+                                        
+                                    </div>
+                              
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                              
+                                    <input type="password" formControlName="password"  class="form-control" name="passwd" placeholder="Password">
+                               
+                            </div> -->
+                                
+                            <!-- <div class="form-group">
+                                <label for="icode" class="col-md-3 control-label">Invitation Code</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="icode" placeholder="">
+                                </div>
+                            </div> -->
+                            <div class="aler alert-danger" *ngIf="form.errors">
+                                The username and password is invalid.
+                           </div>
+                            <div class="form-group">
+                                
+                                    <button id="btn-signup" type="submit" class="btn btn-info">
+                                        <i class="icon-hand-right"></i>Sign Up</button>
+                                   
+                              
+                            </div>
+                             
+                          
+                        </form>    
+
+
+
+   
+    

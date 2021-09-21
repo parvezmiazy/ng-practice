@@ -9,11 +9,13 @@ import { AppComponent } from "./app.component";
 import { CoursesComponent } from "./courses.component";
 import { CourseComponent } from "./course/course.component";
 import { CoursesService } from "./courses.service";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SummaryPipe } from "./summary.pipe";
 import { FavoriteComponent } from "./favorite/favorite.component";
-import { InputFormatDirective } from './input-format.directive';
-import { ContactFormComponent } from './contact-form/contact-form.component';
+import { InputFormatDirective } from "./input-format.directive";
+import { ContactFormComponent } from "./contact-form/contact-form.component";
+import { SignupFormComponent } from "./signup-form/signup-form.component";
+import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,10 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     FavoriteComponent,
     InputFormatDirective,
     ContactFormComponent,
+    SignupFormComponent,
+    NewCourseFormComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
   exports: [CourseComponent],
   providers: [CoursesService],
   bootstrap: [AppComponent],
