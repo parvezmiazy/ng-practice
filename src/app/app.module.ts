@@ -18,6 +18,7 @@ import { SignupFormComponent } from "./signup-form/signup-form.component";
 import { NewCourseFormComponent } from "./new-course-form/new-course-form.component";
 import { PostsComponent } from "./posts/posts.component";
 import { HttpClientModule } from "@angular/common/http";
+import { PostService } from "./services/post.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { HttpClientModule } from "@angular/common/http";
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   exports: [CourseComponent],
-  providers: [CoursesService],
+  providers: [CoursesService, PostService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
