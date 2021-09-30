@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import {
+  Component,
   CUSTOM_ELEMENTS_SCHEMA,
   NgModule,
   NO_ERRORS_SCHEMA,
@@ -19,6 +20,10 @@ import { NewCourseFormComponent } from "./new-course-form/new-course-form.compon
 import { PostsComponent } from "./posts/posts.component";
 import { HttpClientModule } from "@angular/common/http";
 import { PostService } from "./services/post.service";
+import { NavbarComponent } from "./navbar/navbar.component";
+import { HomeComponent } from "./home/home.component";
+import { ProfileComponent } from "./profile/profile.component";
+import { RouterModule } from "@angular/router";
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,8 +36,21 @@ import { PostService } from "./services/post.service";
     SignupFormComponent,
     NewCourseFormComponent,
     PostsComponent,
+    NavbarComponent,
+    HomeComponent,
+    ProfileComponent,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: "", component: HomeComponent },
+      { path: "profile", component: ProfileComponent },
+      { path: "posts", component: PostsComponent },
+    ]),
+  ],
   exports: [CourseComponent],
   providers: [CoursesService, PostService],
   bootstrap: [AppComponent],
