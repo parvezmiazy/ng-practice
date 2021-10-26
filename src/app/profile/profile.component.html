@@ -1,1 +1,78 @@
-<p>profile works!</p>
+<form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+     <div class="col-lg-12">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="text" formControlName="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
+              </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Last Name</label>
+                <input type="text" formControlName="lastName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Last Name">
+              </div>
+        </div>
+     </div>
+    </div>
+    <div class="row" formGroupName="address">
+        
+<div class="col-md-12">
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Address1</label>
+            <input type="text" formControlName="address1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Address 1">
+          </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Address2</label>
+            <input type="text" formControlName="address2" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Address 2">
+          </div>
+    </div>
+   
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label for="exampleInputEmail1">State</label>
+            <input type="text" formControlName="state" class="form-control" 
+            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="State">
+          </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Zip</label>
+            <input type="text" formControlName="zip" class="form-control" 
+            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="State">
+          </div>
+    </div>
+</div>
+  
+    </div>
+       <div class="row" formArrayName="mobiles">
+  <div class="col-lg-12">
+    <div *ngFor="let mob of mobiles.controls; let i=index">
+        <div class="col-lg-1">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Mobile1</label>
+                <input type="text" value="{{ i+1}}" readonly class="form-control" id="exampleInputEmail1">
+                </div>
+        </div>
+      <div class="col-lg-11">
+          <div class="form-group">
+              <label for="exampleInputEmail1">Mobile1</label>
+              <input type="number" [formControlName]="i" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+      </div>
+    </div>
+         <div class="col-lg-2">
+             <br/>
+          <button type="button" class="btn btn-info m-4" (click)="AddMore()">+</button>
+         </div>
+  </div>
+
+       </div>
+
+    <div class="form-group">
+        <button type="submit" [disabled]="!userProfileForm.valid" class="btn btn-primary pull-right">Submit</button>
+    </div>
+  </form>
