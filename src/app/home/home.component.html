@@ -1,1 +1,181 @@
-<p>home works!</p>
+<form #petsForm="ngForm" (submit)="processForm(petsForm )">
+ 
+	<h2>
+		Pets
+	</h2>
+ <input type="text" name="name" [(ngModel)]="form.name"/>
+ <input type="text" name="email" [(ngModel)]="form.email"/>
+	<ng-container *ngFor="let pet of form.pets" >
+ 
+		<!--
+			NOTE: We are using the "nameControl" template variable to define our CSS
+			class. Each template variable is scoped to the template in which it was
+			defined; which means, each "nameControl" instance is scoped to the ngFor
+			loop-iteration of the given Pet model.
+		-->
+		<div
+			class="pet"
+			[class.pet--invalid]="( nameControl.touched && nameControl.invalid )">
+ 
+			<!--
+				Each form control has to have a unique "name" property so that it can be
+				registered with the parent NgForm instance (unless it is denoted as
+				"standalone"). As such, we are using attribute interpolation to give each
+				input a locally-unique name based on the model data (XXX_{{ pet.id }}).
+			-->
+			<select name="type_{{ pet.id }}" [(ngModel)]="pet.type">
+				<option value="Dog">Dog</option>
+				<option value="Cat">Cat</option>
+			</select>
+ 
+			<!--
+				NOTE: We are defining a "nameControl" template variable that will give us
+				access to the "NgModel" instance for this form input. We are then using
+				this reference to adjust the CSS class-list on the parent container.
+			-->
+			<input
+				#nameControl="ngModel"
+				type="text"
+				name="name_{{ pet.id }}"
+				[(ngModel)]="pet.name"
+				required
+				autofocus
+				size="20"
+				placeholder="Name..."
+			/>
+ 
+			<input
+				type="text"
+				name="age_{{ pet.id }}"
+				[(ngModel)]="pet.age"
+				size="10"
+				placeholder="Age..."
+			/>
+ 
+			<label for="isPastOn_{{ pet.id }}">
+				<input
+					type="checkbox"
+					id="isPastOn_{{ pet.id }}"
+					name="isPastOn_{{ pet.id }}"
+					[(ngModel)]="pet.isPastOn"
+					(keydown.tab)="( ( isLast && addPet() ) || true )"
+				/>
+				Is pasted-on?
+			</label>
+ 
+			<a (click)="removePet( index )" title="Remove Pet" class="remove">
+				&times;
+			</a>
+ 
+		</div>
+ 
+	</ng-container>
+ 
+	<p class="actions">
+		<a (click)="addPet()">Add Another Pet</a>
+	</p>
+
+
+	<div class="row clearfix">
+		<h5>interest info </h5>
+		<table class="table table-striped table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>item name</th>
+					<th>price</th>
+					<th>qty</th>
+					<!-- <th>
+						<button type="button" class="btn btn-sm btn-success text-white"
+							(click)="addTaskArea()">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+							{{ 'irri_task_and_activities.ADD_AREA' | translate }}
+						</button>
+					</th> -->
+				</tr>
+			</thead>
+			<tbody>
+				
+				
+					<tr
+						*ngFor="let interest of form.interests; let i=index">
+						<th>{{ i+1 }}</th>
+						<td>{{ interest.item_name }}</td>
+						<td>{{ interest.price }}</td>
+						<td>{{ interest.qty }}</td>
+						<!-- <td>
+							<a class="btn btn-danger" (click)="onDeleteTaskArea(address.ID, i)">
+								<i class="glyphicon glyphicon-remove"></i>
+							</a>
+						</td> -->
+					</tr>
+			
+
+
+			</tbody>
+		</table>
+	</div>
+	<ng-container *ngFor="let interest of form.interests" >
+ 
+		<!--
+			NOTE: We are using the "nameControl" template variable to define our CSS
+			class. Each template variable is scoped to the template in which it was
+			defined; which means, each "nameControl" instance is scoped to the ngFor
+			loop-iteration of the given Pet model.
+		-->
+		<div
+			class="pet"
+			[class.pet--invalid]="( nameControl.touched && nameControl.invalid )">
+ 
+			<input
+				#nameControl="ngModel"
+				type="text"
+				name="item_name_{{ interest.id }}"
+				[(ngModel)]="interest.item_name"
+				required
+				autofocus
+				size="20"
+				placeholder="Item Name..."
+			/>
+ 
+			<input
+				type="text"
+				name="price_{{ interest.id }}"
+				[(ngModel)]="interest.price"
+				size="10"
+				placeholder="Price..."
+			/>
+
+			<input
+			type="text"
+			name="qty_{{ interest.id }}"
+			[(ngModel)]="interest.qty"
+			size="10"
+			placeholder="Qty..."
+		/>
+ 
+
+ 
+			<a (click)="removeInterest( index )" title="Remove Pet" class="remove">
+				&times;
+			</a>
+ 
+		</div>
+ 
+	</ng-container>
+ 
+	<p class="actions">
+		<a (click)="addInterst()">Add Interest</a>
+	</p>
+ 
+	<!--
+		Since we are [implicitly] registering each form control with the parent NgForm
+		instance, the validity of the form will be an aggregation of the individual
+		control validity. As such, we can disable the form submission if the form looks
+		invalid as a whole.
+	-->
+	<button type="submit" [disabled]="( ! petsForm.form.valid )">
+		Process Form
+	</button>
+ 
+</form>
