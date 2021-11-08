@@ -16,10 +16,20 @@
     
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
+     
           <ul class="nav navbar-nav navbar-right">
+            
+           <br/>
+            
+            <li>     <select class="form-control" (change)="changeBranch($event.target.value)" >
+              <option value="null">Select Branch</option>
+              <option value="1">PBD</option>
+              <option value="2">CTG</option>
+            </select></li>
             <li class="active"><a routerLink="/">Home</a></li>
             <li routerLinkActive="active current"><a routerLink="/profile">Profile</a></li>
             <li routerLinkActive="active current"><a routerLink="/posts">Posts</a></li>
+            <li routerLinkActive="active current"><a routerLink="/signup">Signup</a></li>
             <!-- <li><a href="#">Works</a></li>
             <li><a href="#">News</a></li>
             <li><a href="#">Contact</a></li> -->

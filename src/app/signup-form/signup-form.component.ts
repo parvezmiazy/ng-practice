@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { CoursesService } from "../courses.service";
 import { UsernameValidators } from "./username.validators";
 
 @Component({
@@ -8,6 +9,9 @@ import { UsernameValidators } from "./username.validators";
   styleUrls: ["./signup-form.component.css"],
 })
 export class SignupFormComponent {
+  data: any;
+  response: any;
+  constructor(private course: CoursesService) {}
   form = new FormGroup({
     account: new FormGroup({
       username: new FormControl(),
@@ -48,7 +52,19 @@ export class SignupFormComponent {
   get username() {
     return this.form.get("account.username");
   }
+
+  searchClick(search: any) {
+    this.course.getSearchByValue(search).subscribe((response) => {
+      const data = this.response;
+    });
+  }
   // get username() {
   //   return this.form.get("username");
   // }
+
+ title='Signup'
+  myData= {
+    age:25,
+    name:"Parvez Ahmed"
+    };
 }

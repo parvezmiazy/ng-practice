@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { NgForm, FormsModule } from "@angular/forms";
+import { InfoModel } from "./info.model";
 import { InterestModel } from "./interest.model";
 import { PetModel } from "./PetModel.model";
 @Component({
@@ -12,17 +13,26 @@ export class HomeComponent implements OnInit {
     name: "";
     email: "";
     pets: PetModel[];
+    info: InfoModel[];
     interests: InterestModel[];
   };
+  info: InfoModel = {
+    name: "",
+    address: "",
+    mobile: "",
+  };
   pets: PetModel;
+  infoData: any;
 
   // I initialize the app component.
   constructor() {}
   ngOnInit() {
+    this.infoData = [];
     this.form = {
       name: "",
       email: "",
       pets: [],
+      info: [],
       interests: [],
     };
 
@@ -61,11 +71,23 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  submitted = false;
+
+  newInfo() {
+    this.submitted = true;
+    this.infoData.push(this.info);
+    this.form.info.push(this.info);
+    this.form.info = null;
+  }
+
   // I process the form-model.
   public processForm(form: any): void {
     console.log(this.form);
   }
 
+  public removeInfo(index: number): void {
+    this.infoData.splice(index, 1);
+  }
   public removePet(index: number): void {
     this.form.pets.splice(index, 1);
   }

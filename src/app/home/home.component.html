@@ -75,46 +75,6 @@
 		<a (click)="addPet()">Add Another Pet</a>
 	</p>
 
-
-	<div class="row clearfix">
-		<h5>interest info </h5>
-		<table class="table table-striped table-bordered table-hover">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>item name</th>
-					<th>price</th>
-					<th>qty</th>
-					<!-- <th>
-						<button type="button" class="btn btn-sm btn-success text-white"
-							(click)="addTaskArea()">
-							<i class="fa fa-plus" aria-hidden="true"></i>
-							{{ 'irri_task_and_activities.ADD_AREA' | translate }}
-						</button>
-					</th> -->
-				</tr>
-			</thead>
-			<tbody>
-				
-				
-					<tr
-						*ngFor="let interest of form.interests; let i=index">
-						<th>{{ i+1 }}</th>
-						<td>{{ interest.item_name }}</td>
-						<td>{{ interest.price }}</td>
-						<td>{{ interest.qty }}</td>
-						<!-- <td>
-							<a class="btn btn-danger" (click)="onDeleteTaskArea(address.ID, i)">
-								<i class="glyphicon glyphicon-remove"></i>
-							</a>
-						</td> -->
-					</tr>
-			
-
-
-			</tbody>
-		</table>
-	</div>
 	<ng-container *ngFor="let interest of form.interests" >
  
 		<!--
@@ -167,13 +127,83 @@
 	<p class="actions">
 		<a (click)="addInterst()">Add Interest</a>
 	</p>
+	<div class="row clearfix">
+		<h5>Customer info </h5>
+		<table class="table table-striped table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Sl</th>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Mobile</th>
+					<!-- <th>
+						<button type="button" class="btn btn-sm btn-success text-white"
+							(click)="addTaskArea()">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+							{{ 'irri_task_and_activities.ADD_AREA' | translate }}
+						</button>
+					</th> -->
+				</tr>
+			</thead>
+			<tbody>
+				
+				
+					<tr
+						*ngFor="let interest of infoData; let i=index">
+						<th>{{ i+1 }}</th>
+						<td>{{ interest.name }}</td>
+						<td>{{ interest.address }}</td>
+						<td>{{ interest.mobile }}</td>
+						<td><a (click)="removeInfo( index )" title="Remove Pet" class="remove">
+							&times;
+						</a></td>
+						<!-- <td>
+							<a class="btn btn-danger" (click)="onDeleteTaskArea(address.ID, i)">
+								<i class="glyphicon glyphicon-remove"></i>
+							</a>
+						</td> -->
+					</tr>
+			
+
+
+			</tbody>
+		</table>
+	</div>
+	
  
-	<!--
-		Since we are [implicitly] registering each form control with the parent NgForm
-		instance, the validity of the form will be an aggregation of the individual
-		control validity. As such, we can disable the form submission if the form looks
-		invalid as a whole.
-	-->
+		
+	
+			<div>
+			<input type="text" id="name"
+			
+			[(ngModel)]="info.name" name="name"
+			#name="ngModel"
+			>
+ 
+			<input
+				type="text"
+				name="address"
+				[(ngModel)]="info.address"
+				placeholder="address"
+				#address="ngModel"
+			/>
+
+			<input
+			type="text"
+			name="mobile"
+			[(ngModel)]="info.mobile"
+			size="10"
+			placeholder="Mobile"
+			#mobile="ngModel"
+		/>
+ 
+
+		<button type="submit" (click)="newInfo()" value="Add">Add</button>
+		<button type="submit" (click)="reset('')">Reset</button>
+			
+ 
+		</div>
+		
 	<button type="submit" [disabled]="( ! petsForm.form.valid )">
 		Process Form
 	</button>

@@ -1,4 +1,4 @@
-
+<!-- 
                         <form  [formGroup]="form" (ngSubmit)="login()">
 
                             <div formGroupName="account">
@@ -71,7 +71,7 @@
                                     <input type="text" class="form-control" name="icode" placeholder="">
                                 </div>
                             </div> -->
-                            <div class="aler alert-danger" *ngIf="form.errors">
+                            <!-- <div class="aler alert-danger" *ngIf="form.errors">
                                 The username and password is invalid.
                            </div>
                             <div class="form-group">
@@ -83,7 +83,16 @@
                             </div>
                              
                           
-                        </form>    
+                        </form>     -->
+
+
+<input type="text" name="searchText" #search/>
+<button (click)="searchClick(search)">Search</button>    
+
+<app-child-form [cData]="myData"></app-child-form>
+
+<input type="text" [(ngModel)]="name"/>
+<p>{{name}}</p>
 
 
 

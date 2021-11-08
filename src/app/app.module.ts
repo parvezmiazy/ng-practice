@@ -24,6 +24,8 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { HomeComponent } from "./home/home.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { RouterModule } from "@angular/router";
+import { ChildFormComponent } from './child-form/child-form.component';
+import { UserFormComponent } from './user-form/user-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,8 @@ import { RouterModule } from "@angular/router";
     NavbarComponent,
     HomeComponent,
     ProfileComponent,
+    ChildFormComponent,
+    UserFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +53,7 @@ import { RouterModule } from "@angular/router";
       { path: "", component: HomeComponent },
       { path: "profile", component: ProfileComponent },
       { path: "posts", component: PostsComponent },
+      { path: "signup", component: SignupFormComponent },
     ]),
   ],
   exports: [CourseComponent],
