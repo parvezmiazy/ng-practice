@@ -65,8 +65,8 @@ export class ProfileComponent implements OnInit {
   removeQuantity(i: number) {
     this.quantities().removeAt(i);
   }
-  removeInterest(i: number) {
-    this.interests().removeAt(i);
+  removeInterest(j: number) {
+    this.interests().removeAt(j);
   }
 
   onSubmit() {

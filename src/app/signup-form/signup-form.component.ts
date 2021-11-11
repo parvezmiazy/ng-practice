@@ -62,9 +62,30 @@ export class SignupFormComponent {
   //   return this.form.get("username");
   // }
 
- title='Signup'
-  myData= {
-    age:25,
-    name:"Parvez Ahmed"
-    };
+  title = "Signup";
+  myData = {
+    age: 25,
+    name: "Parvez Ahmed",
+  };
+
+  userList = [];
+  Username: string = "Enter Username";
+  addUser(prouser) {
+    if (prouser.value.length > 0) {
+      this.userList.push(prouser.value);
+      prouser.value = "";
+    }
+  }
+
+  removeUser(index) {
+    this.userList.splice(index, 1);
+  }
+
+  log(x: any) {
+    console.log(x);
+  }
+
+  insertData(f) {
+    console.log(f.value);
+  }
 }
