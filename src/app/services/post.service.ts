@@ -24,4 +24,8 @@ export class PostService {
   deletePost(id) {
     return this.http.delete(this.url + "/" + id);
   }
+
+  getUser(){
+    return this.http.get('https://jsonplaceholder.typicode.com/users');
+  }
 }

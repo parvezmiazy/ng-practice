@@ -1,14 +1,16 @@
+import { PostService } from "./../services/post.service";
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, Validators, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-profile",
-  templateUrl: "./profile.component.html",
+  templateUrl: "./profile3.component.html",
   styleUrls: ["./profile.component.css"],
 })
 export class ProfileComponent implements OnInit {
   userProfileForm: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  userList$;
+  constructor(private fb: FormBuilder, private service: PostService) {}
 
   ngOnInit() {
     this.userProfileForm = this.fb.group({
@@ -71,5 +73,9 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     console.log(this.userProfileForm.value);
+  }
+
+  getUserList() {
+    this.userList$ = this.service.getUser();
   }
 }
